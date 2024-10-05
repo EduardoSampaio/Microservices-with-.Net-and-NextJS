@@ -1,0 +1,8 @@
+services:
+  postgres:
+    image: postgres
+  # auctionservice:
+  #   image: ${DOCKER_REGISTRY-}auctionservice
+  #   build:
+  #     context: .
+  #     dockerfile: src/AuctionService/Dockerfile
