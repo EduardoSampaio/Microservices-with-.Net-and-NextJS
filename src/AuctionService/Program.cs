@@ -1,3 +1,4 @@
+using AuctionService;
 using AuctionService.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,7 +10,7 @@ builder.Services.AddDbContext<AuctionDbContext>(opt =>
     opt.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
+builder.Services.AddScoped<IAuctionRepository, AuctionRepository>();
 builder.Services.AddControllers();
 
 var app = builder.Build();
