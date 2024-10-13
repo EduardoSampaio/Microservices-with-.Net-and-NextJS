@@ -3,6 +3,8 @@ services:
     image: postgres
   mongodb:
     image: mongo
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
   # auctionservice:
   #   image: ${DOCKER_REGISTRY-}auctionservice
   #   build:

@@ -14,6 +14,10 @@ services:
       - 27017:27017
     volumes:
       - mongodata:/var/lib/mongodb/data
+  rabbitmq:
+    ports:
+      - 5672:5672
+      - 15672:15672
   # auctionservice:
   #   environment:
   #     - ASPNETCORE_ENVIRONMENT=Development
