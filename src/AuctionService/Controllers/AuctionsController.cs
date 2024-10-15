@@ -42,7 +42,7 @@ public class AuctionsController : ControllerBase
         return auction;
     }
 
-    //[Authorize]
+    [Authorize]
     [HttpPost]
     public async Task<ActionResult<AuctionDto>> CreateAuction(CreateAuctionDto auctionDto)
     {
@@ -80,7 +80,7 @@ public class AuctionsController : ControllerBase
         auction.Item.Mileage = updateAuctionDto.Mileage ?? auction.Item.Mileage;
         auction.Item.Year = updateAuctionDto.Year ?? auction.Item.Year;
 
-        //await _publishEndpoint.Publish(_mapper.Map<AuctionUpdated>(auction));
+        await _publishEndpoint.Publish(_mapper.Map<AuctionUpdated>(auction));
 
         var result = await _repo.SaveChangesAsync();
 
@@ -101,7 +101,7 @@ public class AuctionsController : ControllerBase
 
         _repo.RemoveAuction(auction);
 
-        //await _publishEndpoint.Publish<AuctionDeleted>(new { Id = auction.Id.ToString() });
+        await _publishEndpoint.Publish<AuctionDeleted>(new { Id = auction.Id.ToString() });
 
         var result = await _repo.SaveChangesAsync();
 
